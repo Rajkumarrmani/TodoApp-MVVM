@@ -27,7 +27,7 @@ fun TodoItem(
     modifier: Modifier = Modifier
 ) {
     Row(
-        modifier = Modifier,
+        modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(

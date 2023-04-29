@@ -3,10 +3,15 @@
 package com.raj.todonoteapp_mvvm.ui.todo_list
 
 import android.annotation.SuppressLint
+import android.app.Application
+import android.util.Log
+import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.rememberScrollableState
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxWidth
+
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -27,6 +32,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.raj.todonoteapp_mvvm.utils.UiEvent
+import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.graphics.Color
+
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -71,13 +79,15 @@ fun TodoListScreen(
             }
         }
     ) {
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize()
+        ) {
             items(todos.value) { todo ->
                 TodoItem(
                     todo = todo,
                     onEvent = viewModel::onEvent,
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
                         .clickable {
                             viewModel.onEvent(TodoListEvent.OnTodoClick(todo))
                         }
@@ -86,5 +96,4 @@ fun TodoListScreen(
             }
         }
     }
-
 }

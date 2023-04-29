@@ -41,7 +41,7 @@ fun AddEditTodoScreen(
             when (event) {
                 UiEvent.PopBackStack -> onPopBackStack()
                 is UiEvent.ShowSnackbar -> {
-                    val result = scaffoldState.showSnackbar(
+                    scaffoldState.showSnackbar(
                         message = event.message,
                         actionLabel = event.action
                     )
@@ -85,7 +85,7 @@ fun AddEditTodoScreen(
             TextField(
                 value = viewModel.description,
                 onValueChange = {
-                    viewModel.onEvent(AddEditTodoEvent.OnTitleChange(it))
+                    viewModel.onEvent(AddEditTodoEvent.OnDescriptionChange(it))
                 },
                 placeholder = {
                     Text(text = "Description")
