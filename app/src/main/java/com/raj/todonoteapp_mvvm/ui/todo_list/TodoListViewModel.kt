@@ -44,7 +44,7 @@ class TodoListViewModel @Inject constructor(
                 sendUiEvent(UiEvent.Navigate(Routes.ADD_EDIT_TODO + "?todoIs=${event.todo.id}"))
             }
 
-            is TodoListEvent.DeleteTodoClick -> {
+            is TodoListEvent.OnDeleteTodoClick -> {
                 viewModelScope.launch {
                     deletedTodo = event.todo
                     repository.deleteTodo(event.todo)
